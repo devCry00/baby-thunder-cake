@@ -22,9 +22,9 @@
         </ul>
       </div>
       <div class="d-flex align-items-center">
-        <button class="btn btn-primary m-1" target="_blank" href="https://pancakeswap.finance/swap?outputCurrency=0xf1496dc3054b99bfe48b6738320d45eef8513610">
+        <button class="btn btn-primary m-1" onclick="onComplete">
           <i class="fas fa-wallet pr-2"></i>
-          Connect wallet
+          {{ wallet }}
         </button>
         <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
           <i class="khaki-text link fab fa-telegram-plane fa-2x"></i>
@@ -78,40 +78,37 @@
           <h5 style="margin: 0">Claim Rewards</h5>
         </button>
       </div>
+
+    <div id="demo">
+        <vue-metamask 
+            userMessage="msg" 
+            @onComplete="onComplete"
+        >
+        </vue-metamask>
+    </div>
     </div>
   </main>
 </template>
 <script>
-export default {
-  data: () => ({
-
-  }),
-  methods: {
-    toRoute(x) {
-      this.$router.push({ name: x })
+import VueMetamask from 'vue-metamask';
+    export default {
+        components: {
+            VueMetamask,
+        },
+        data(){
+            return {
+                msg: "This is demo net work",
+                wallet: ''
+            }
+        },
+        methods:{
+            toRoute(x) {
+              this.$router.push({ name: x })
+            },
+            onComplete(data){
+                console.log('data:', data);
+                this.wallet = data.metaMaskAddress
+            }
+        }
     }
-  }
-}
-/*// var lastScrollTop = 0;
-var scrollableElement = document.body; //document.getElementById('scrollableElement');
-var element = document.getElementById("mainNav");
-
-scrollableElement.addEventListener('wheel', checkScrollDirection);
-
-function checkScrollDirection(event) {
- if (checkScrollDirectionIsUp(event)) {
-   element.classList.add("nav-up");
-   element.classList.remove("nav-down");
- } else {
-   element.classList.add("nav-down");
-   element.classList.remove("nav-up");
- }
-}
-
-function checkScrollDirectionIsUp(event) {
- if (event.wheelDelta) {
-   return event.wheelDelta > 0;
- }
- return event.deltaY < 0;
-}*/
 </script>

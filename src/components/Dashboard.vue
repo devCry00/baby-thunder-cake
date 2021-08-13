@@ -1,7 +1,7 @@
 <template>
   <main id="app" class="wrapper" role="main">
     <nav id="mainNav" class="navbar navbar-expand-lg  position-relative">
-      <a class="navbar-brand" href="#"><img width="70" class="d-block mr-3" src="assets/img/babythundercake.png"
+      <a class="navbar-brand" href="#"><img width="70" class="d-block mr-3" src="@/assets/images/babythundercake.png"
           alt="Babythundercake"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,13 +11,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link khaki-text link h6 mb-0 mr-4" href="index.html">Home</a>
+            <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('home')">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link khaki-text link h6 mb-0 mr-4" href="preview.html">View snapshots</a>
+            <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('snapshots')">View snapshots</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link khaki-text link h6 mb-0 mr-4" href="dashboard.html">Dashboard</a>
+            <a class="nav-link khaki-text link h6 mb-0 mr-4" >Dashboard</a>
           </li>
         </ul>
       </div>
@@ -34,7 +34,7 @@
         </a>
       </div>
     </nav>
-    <div class="container dashboard-section" style="">
+    <div class="container dashboard-section mt-5 pt-5" style="">
       <marquee>
         <h5 class="khaki-text">- - THIS PAGE IS UNDER DEVELOPMENT - -</h5>
       </marquee>
@@ -82,7 +82,17 @@
   </main>
 </template>
 <script>
-// var lastScrollTop = 0;
+export default {
+  data: () => ({
+
+  }),
+  methods: {
+    toRoute(x) {
+      this.$router.push({ name: x })
+    }
+  }
+}
+/*// var lastScrollTop = 0;
 var scrollableElement = document.body; //document.getElementById('scrollableElement');
 var element = document.getElementById("mainNav");
 
@@ -103,5 +113,5 @@ function checkScrollDirectionIsUp(event) {
    return event.wheelDelta > 0;
  }
  return event.deltaY < 0;
-}
+}*/
 </script>

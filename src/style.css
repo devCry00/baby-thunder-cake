@@ -15061,6 +15061,7 @@ a {
   margin: 10px;
   padding: 20px;
   flex-direction: column;
+  text-align: -webkit-left;
 }
 
 .tokenomic-cards > div > div{
@@ -15187,6 +15188,17 @@ html#dashboard, html#dashboard body, html#dashboard body main, html#dashboard bo
   margin: 1%;
 }
 
+.custom-gradient-bg {
+  width: -webkit-fill-available;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  -webkit-animation: gradient 15s ease infinite;
+  animation: gradient 15s ease infinite;
+  /*border-radius: 15px;*/
+  /*padding: 4%;*/
+  /*margin: 1%;*/
+}
+
 #check-btn {
   -webkit-box-shadow: 0 0 12px 0 #a655d4;
   box-shadow: 0 0 12px 0 #a655d4;
@@ -15217,5 +15229,17 @@ html#dashboard, html#dashboard body, html#dashboard body main, html#dashboard bo
   }
 }
 
+#roadmap ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center; 
+}
+
+#roadmap ul h6 {
+  text-align: -webkit-left;
+}
 
 /*# sourceMappingURL=../../../scss */

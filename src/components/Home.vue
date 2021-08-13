@@ -3,7 +3,7 @@
     <!-- <div class="content-page"> -->
       <div class="content" style="overflow-x: hidden;">
         <nav id="mainNav" class="navbar navbar-expand-lg  position-relative">
-           <a class="navbar-brand" href="#"><img width="70" class="d-block mr-3" src="assets/img/babythundercake.png"
+           <a class="navbar-brand" href="#"><img width="70" class="d-block mr-3" src="@/assets/images/babythundercake.png"
               alt="Babythundercake"></a>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,10 +22,10 @@
                     <a class="nav-link khaki-text link h6 mb-0 mr-4" href="#roadmap">Roadmap</a>
                  </li>
                  <li class="nav-item">
-                    <a class="nav-link khaki-text link h6 mb-0 mr-4" href="preview.html">View snapshots</a>
+                    <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('snapshots')">View snapshots</a>
                  </li>
                  <li class="nav-item">
-                    <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="asd()">Dashboard</a>
+                    <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('dashboard')">Dashboard</a>
                  </li>
               </ul>
            </div>
@@ -40,7 +40,7 @@
         </nav>
       <div class="container position-relative hero">
          <div class="row d-flex align-items-center justify-content-between py-5 my-5 position-relative hero-content">
-            <div class="col-12 col-sm-12 col-md-6 ">
+            <div class="col-12 col-sm-12 col-md-6 " style="text-align: -webkit-left;">
                <h1 class="h2" hidden>Babythundercake</h1>
                <!-- <img width="350" class="d-block mb-3" src="assets/img/SVG/Logotype.svg" alt="BabyPoo"> -->
                <h5 class="mb-2 mr-3">Buy, hold, and be rewarded with Thundercake and Cake which will automatically be credited on your wallet for every transaction you make!</h5>
@@ -55,22 +55,22 @@
                   ThunderCake and Cake rewards that $BabyThunderCake offers is so awesome that it gives SUGAR RUSH to your wallet!
                </p>
                <div class="">
-                  <a class="btn btn-primary m-1" target="_blank" href="https://pancakeswap.finance/swap?outputCurrency=0xf1496dc3054b99bfe48b6738320d45eef8513610">
-                  <img width="30" class="mr-2" src="assets/img/LogoPancake.png" alt="">
+                  <a class="btn btn-primary text-white m-1" target="_blank" href="https://pancakeswap.finance/swap?outputCurrency=0xf1496dc3054b99bfe48b6738320d45eef8513610">
+                  <img width="30" class="mr-2" src="@/assets/images/LogoPancake.png" alt="">
                   Buy now!
                   </a>
-                  <a class="btn btn-primary m-1" target="_blank" href="https://www.dextools.io/app/pancakeswap/pair-explorer/0x946c1354e5f0ad36b067dd3b4f772de10a34ba36">
-                  <img width="30" class="mr-2" src="assets/img/dextools.png" alt="">
+                  <a class="btn btn-primary text-white m-1" target="_blank" href="https://www.dextools.io/app/pancakeswap/pair-explorer/0x946c1354e5f0ad36b067dd3b4f772de10a34ba36">
+                  <img width="30" class="mr-2" src="@/assets/images/dextools.png" alt="">
                   Dextools
                   </a>
-                  <a class="btn btn-primary btn-small m-1" target="_blank" href="https://poocoin.app/tokens/0xf1496dc3054b99bfe48b6738320d45eef8513610">
-                  <img width="30" class="mr-2" src="assets/img/poocoin.png" alt="">
+                  <a class="btn btn-primary text-white btn-small m-1" target="_blank" href="https://poocoin.app/tokens/0xf1496dc3054b99bfe48b6738320d45eef8513610">
+                  <img width="30" class="mr-2" src="@/assets/images/poocoin.png" alt="">
                   Poo Chart
                   </a>
                </div>
             </div>
             <div class="col-12 col-sm-12 col-md-6 d-flex position-relative justify-content-center">
-               <img class="character d-block mt-auto" src="assets/img/babythundercake.gif" alt="Babythundercake">
+               <img class="character d-block mt-auto" src="@/assets/images/babythundercake.gif" alt="Babythundercake">
             </div>
          </div>
       </div>
@@ -94,7 +94,7 @@
             </div>
             <div class="row align-items-center py-5">
                <div class="col-12 col-sm-6 col-md-6">
-                  <img class="d-block mt-auto" src="assets/img/teeter.gif" style="width: 100%" alt="Babythundercake">
+                  <img class="d-block mt-auto" src="@/assets/images/teeter.gif" style="width: 100%" alt="Babythundercake">
                </div>
                <div class="col-12 col-sm-6 col-md-6 text-left">
                   <h4>So, the 1 Billion MarketCap question was...</h4>
@@ -125,23 +125,39 @@
                   <div class="col-12 col-md-8 col-sm-12 row justify-content-center tokenomic-cards">
                      <div class="d-flex pb-2 col-md-5">
                         <div>
-                           <i class="fas fa-question-circle fa-2x mb-3 mr-3"></i>
+                           <font-awesome-icon icon="question-circle" class="fa-2x mb-3 mr-3"/>
                            <h6>How the contract works</h6>
                         </div>
-                        <!-- <p> -->
-                           Poocoin chart will show 5 transactions for every sale that occurs:
-                          <li>Seller’s transaction</li>
-                          <li>4% Cake rewards</li>
-                          <li>4% ThunderCake rewards</li>
-                          <li>3% Liquidity</li>
-                          <li>3% Marketing (to bring influencers on board)</li>
-                          <li>1% Sell Fee</li>
-                          On the other hand, Dextools chart will only show a single transaction.
-                        <!-- </p> -->
+                        <p>Poocoin chart will show 5 transactions for every sale that occurs:</p>
+                        <ul>
+                           <font-awesome-icon icon="bolt" class="text-success mr-2"/>
+                           <small>Seller’s transaction</small>
+                        </ul>
+                        <ul>
+                           <font-awesome-icon icon="bolt" class="text-success mr-2"/>
+                           <small>4% Cake rewards</small>
+                        </ul>
+                        <ul>
+                           <font-awesome-icon icon="bolt" class="text-success mr-2"/>
+                           <small>4% ThunderCake rewards</small>
+                        </ul>
+                        <ul>
+                           <font-awesome-icon icon="bolt" class="text-success mr-2"/>
+                           <small>3% Liquidity</small>
+                        </ul>
+                        <ul>
+                           <font-awesome-icon icon="bolt" class="text-success mr-2"/>
+                           <small>3% Marketing (to bring influencers on board)</small>
+                        </ul>
+                        <ul>
+                           <font-awesome-icon icon="bolt" class="text-success mr-2"/>
+                           <small>1% Sell Fee</small>
+                        </ul>
+                        <p>On the other hand, Dextools chart will only show a single transaction.</p>
                      </div>
                      <div class="d-flex pb-2 col-md-5">
                         <div>
-                           <i class="fas fa-users fa-2x mb-3 mr-3"></i>
+                           <font-awesome-icon icon="users" class="fa-2x mb-3 mr-3"/>
                            <h6>Distribution of Cake and Thundercake</h6>
                         </div>
                         <p>
@@ -153,7 +169,7 @@
                      </div>
                      <div class="d-flex pb-2 col-md-5">
                         <div>
-                           <i class="fas fa-money-bill-alt fa-2x mb-3 mr-3"></i>
+                           <font-awesome-icon icon="gem" class="fa-2x mb-3 mr-3"/>
                            <h6>Crediting of rewards</h6>
                         </div>
                         <p>
@@ -165,7 +181,7 @@
                      </div>
                      <div class="d-flex pb-2 col-md-5">
                         <div>
-                           <i class="fas fa-lock fa-2x mb-3 mr-3"></i>
+                           <font-awesome-icon icon="lock" class="fa-2x mb-3 mr-3"/>
                            <h6>Anti-Rug System - Secured by Design</h6>
                         </div>
                         <p>
@@ -235,89 +251,89 @@
                         <h2 class="violet">Road Map</h2>
                      </div>
                   </div>
-                  <ul class="row ">
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success mr-2"></i>
+                  <ul class="row">
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0">Babythundercake is born.</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0"> Website launched</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0">Brand development</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">NFT Game Development</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">NFT GAME</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt  text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0"> Socials created</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0">Organic awareness campaign</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0">Babythundercake Dashboard (earnings tracking)</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0">Influencers</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0">PooCoin Ads</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">DexTools Trending</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">CoinGecko</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">CoinMarketCap</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">Website Revamp</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0">Community Building</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">Massive Babythundercake pay-outs</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">Certik Audit</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0"> Influencer marketing push</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-bolt text-success mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="bolt" class="text-success mr-2"/>
                         <h6 class="mb-0">Baby Babythundercake Swap</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">Massive influencer partnerships</h6>
                      </li>
-                     <li class="col-12 col-sm-6 col-md-4 d-flex align-items-center mb-2">
-                        <i class="fas fa-times-circle text-secondary mr-2"></i>
+                     <li class="col-12 col-sm-6 col-md-3 d-flex align-items-center mb-2">
+                        <font-awesome-icon icon="times-circle" class="text-secondary mr-2"/>
                         <h6 class="mb-0">Listings on major CEX</h6>
                      </li>
                   </ul>
@@ -332,9 +348,9 @@
                         <!-- Logo -->
                         <div class="mb-4 d-flex justify-content-between w-100">
                            <div class="d-flex align-items-center ">
-                              <img width="70" class="d-block mr-3" src="assets/img/babythundercake.png" alt="Babythundercake">
+                              <img width="70" class="d-block mr-3" src="@/assets/images/babythundercake.png" alt="Babythundercake">
                               <div class="">
-                                 <h3 class="violet" style="font-size: 104%;">Babythundercake</h3>
+                                 <h3 class="violet" style="font-size: 104%; margin: 0">Babythundercake</h3>
                                  <p class="text-white small mb-0">Hold Babythundercake and earn $CAKE and $THUNDERCAKE automatically or claim your
                                     rewards
                                     on our website!
@@ -346,9 +362,15 @@
                      <div class="col-12 col-md-4">
                         <div class="d-flex flex-column">
                            <a class="text-white  m-1 mr-5 d-flex align-items-center" target="_blank"
-                              href="https://t.me/BabyThunderCake"><i class="fab fa-telegram-plane fa-2x mr-2"></i> BabyThunderCake</a>
+                              href="https://t.me/BabyThunderCake">
+                              <font-awesome-icon :icon="['fab', 'telegram-plane']" class="mr-2 mb-2"/>
+                              <h5 style="font-size: 100%">BabyThunderCake</h5>
+                           </a>
                            <a class="text-white  m-1 d-flex align-items-center" target="_blank"
-                              href="https://twitter.com/BabyThunderCake"><i class="fab fa-twitter fa-2x mr-2"></i>Twitter BBTC</a>
+                              href="https://twitter.com/BabyThunderCake">
+                              <font-awesome-icon :icon="['fab', 'twitter']" class="mr-2 mb-2"/>
+                              <h5 style="font-size: 100%">Twitter BBTC</h5>
+                           </a>
                         </div>
                      </div>
                   </div>
@@ -369,13 +391,12 @@ export default {
     }
   }),
   methods: {
-    asd() {
-      console.log(this.$router)
-      this.$router.push({ name: "dashboard" })
+    toRoute(x) {
+      this.$router.push({ name: x })
     }
   }
 }
-var scrollableElement = document.body; //document.getElementById('scrollableElement');
+/*var scrollableElement = document.body; //document.getElementById('scrollableElement');
 var element = document.getElementById("mainNav");
 
 scrollableElement.addEventListener('wheel', checkScrollDirection);
@@ -395,7 +416,7 @@ function checkScrollDirectionIsUp(event) {
    return event.wheelDelta > 0;
  }
  return event.deltaY < 0;
-}
+}*/
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

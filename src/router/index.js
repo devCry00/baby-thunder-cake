@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '@/components/Home.vue'
+import Snapshots from '@/components/Snapshots.vue'
 import Dashboard from '@/components/Dashboard.vue'
 
 Vue.use(Router)
@@ -12,6 +13,11 @@ const router = new Router({
 			path: '/baby-thunder-cake/',
 			name: 'home',
 			component: Home
+		},
+		{
+			path: '/baby-thunder-cake/snapshots',
+			name: 'snapshots',
+			component: Snapshots
 		},
 		{
 			path: '/baby-thunder-cake/dashboard',

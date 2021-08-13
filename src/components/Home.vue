@@ -371,7 +371,7 @@ export default {
   methods: {
     asd() {
       console.log(this.$router)
-      this.$router.push({ path: "/dashboard" })
+      this.$router.push({ name: "dashboard" })
     }
   }
 }

@@ -1,7 +1,5 @@
 <template>
-  <!-- <div class="hello"> -->
-    <!-- <div class="content-page"> -->
-      <div class="content" style="overflow-x: hidden;">
+      <div class="content" style="overflow-x: hidden;" @scroll="asd()">
         <nav id="mainNav" class="navbar navbar-expand-lg  position-relative">
            <a class="navbar-brand" href="#"><img width="70" class="d-block mr-3" src="@/assets/images/babythundercake.png"
               alt="Babythundercake"></a>
@@ -393,6 +391,9 @@ export default {
   methods: {
     toRoute(x) {
       this.$router.push({ name: x })
+    },
+    asd() {
+      console.log(12)
     }
   }
 }

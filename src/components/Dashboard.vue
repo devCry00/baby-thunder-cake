@@ -22,9 +22,18 @@
         </ul>
       </div>
       <div class="d-flex align-items-center">
-        <button class="btn btn-primary m-1" onclick="onComplete">
+        <button class="btn btn-primary m-1" @click="login">
           <i class="fas fa-wallet pr-2"></i>
-          {{ wallet }}
+          <font-awesome-icon icon="wallet" class="mr-3"/>
+          {{ wallet ? shorten(wallet) : 'Connect wallet'}}
+        </button>
+        <button class="btn btn-primary m-1" @click="logout" v-if="wallet">
+          <i class="fas fa-wallet pr-2"></i>
+          logout
+        </button>
+        <button class="btn btn-primary m-1" @click="test">
+          <i class="fas fa-wallet pr-2"></i>
+          check console
         </button>
         <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
           <i class="khaki-text link fab fa-telegram-plane fa-2x"></i>
@@ -79,34 +88,68 @@
         </button>
       </div>
 
-    <div id="demo">
+      <div id="demo">
         <vue-metamask 
             userMessage="msg" 
-            @onComplete="onComplete"
         >
+            <!-- @onComplete="onComplete" -->
         </vue-metamask>
-    </div>
+      </div>
     </div>
   </main>
 </template>
 <script>
 import VueMetamask from 'vue-metamask';
+// import web3 from 'web3'
+import Moralis from 'moralis'
   export default {
+    // mixins:[web3],
     components: {
         VueMetamask,
     },
     data: () => ({
       msg: "This is demo net work",
-      wallet: ''
+      wallet: '',
+      moralisUser: {},
     }),
     methods:{
       toRoute(x) {
         this.$router.push({ name: x })
       },
+      /*
+      vue-metamask dialog
+
       onComplete(data){
           console.log('data:', data);
           this.wallet = data.metaMaskAddress
+      },*/
+      shorten(x) {
+        return `${x.slice(0, 9)}…`
+      },
+      async login(){
+        var ethAddress
+        await Moralis.Web3.authenticate().then(function (user) {
+          ethAddress = user.get('ethAddress')
+          console.log('moralisUser', user)
+        })
+        this.wallet = ethAddress
+      },
+      async logout() {
+        // not yet working
+        console.log(Moralis)
+        await Moralis.User.logOut()
+        this.wallet = ''
+      },
+      async test() {
+        var options = { chain: 'bsc', address: this.wallet }
+        const balances = await Moralis.Web3.getAllERC20(options); 
+        console.log('balances', balances)
       }
+    },
+    created() {
+
+
+      console.log('moralis',Moralis)
     }
   }
 </script>

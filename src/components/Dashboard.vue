@@ -91,24 +91,15 @@
         </button>
       </div>
 
-      <div id="demo">
-        <vue-metamask 
-            userMessage="msg" 
-        >
-            <!-- @onComplete="onComplete" -->
-        </vue-metamask>
-      </div>
     </div>
   </main>
 </template>
 <script>
-import VueMetamask from 'vue-metamask';
-// import web3 from 'web3'
+
 import Moralis from 'moralis'
   export default {
-    // mixins:[web3],
     components: {
-        VueMetamask,
+        // VueMetamask,
     },
     data: () => ({
       msg: "This is demo net work",

@@ -91,24 +91,22 @@
 </template>
 <script>
 import VueMetamask from 'vue-metamask';
-    export default {
-        components: {
-            VueMetamask,
-        },
-        data(){
-            return {
-                msg: "This is demo net work",
-                wallet: ''
-            }
-        },
-        methods:{
-            toRoute(x) {
-              this.$router.push({ name: x })
-            },
-            onComplete(data){
-                console.log('data:', data);
-                this.wallet = data.metaMaskAddress
-            }
-        }
+  export default {
+    components: {
+        VueMetamask,
+    },
+    data: () => ({
+      msg: "This is demo net work",
+      wallet: ''
+    }),
+    methods:{
+      toRoute(x) {
+        this.$router.push({ name: x })
+      },
+      onComplete(data){
+          console.log('data:', data);
+          this.wallet = data.metaMaskAddress
+      }
     }
+  }
 </script>

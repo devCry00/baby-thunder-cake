@@ -95,12 +95,10 @@
   </main>
 </template>
 <script>
-
+import Navbar from '@/shared/Navbar.vue'
 import Moralis from 'moralis'
   export default {
-    components: {
-        // VueMetamask,
-    },
+    components: {Navbar},
     data: () => ({
       msg: "This is demo net work",
       btcContract: '0xf1496dc3054b99bfe48b6738320d45eef8513610',

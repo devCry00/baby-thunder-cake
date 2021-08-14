@@ -1,41 +1,6 @@
 <template>
       <div class="content" style="overflow-x: hidden;" @scroll="asd()">
-        <nav id="mainNav" class="navbar navbar-expand-lg  position-relative">
-           <a class="navbar-brand" href="#"><img width="70" class="d-block mr-3" src="@/assets/images/babythundercake.png"
-              alt="Babythundercake"></a>
-           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <!-- <span class="navbar-toggler-icon"></span> -->
-              <i class="fas fa-bars" style="color: #24170e;"></i>
-           </button>
-           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                 <li class="nav-item ">
-                    <a class="nav-link khaki-text link h6 mr-4" href="#why">Why Babythundercake</a>
-                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link khaki-text link h6 mb-0 mr-4" href="#features">Features</a>
-                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link khaki-text link h6 mb-0 mr-4" href="#roadmap">Roadmap</a>
-                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('snapshots')">View snapshots</a>
-                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('dashboard')">Dashboard</a>
-                 </li>
-              </ul>
-           </div>
-           <div class="d-flex align-items-center">
-              <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
-              <i class="khaki-text link fab fa-telegram-plane fa-2x"></i>
-              </a>
-              <a class="text-secondary  m-2" target="_blank" href="https://twitter.com/Babythundercake">
-              <i class="khaki-text link fab fa-twitter fa-2x"></i>
-              </a>
-           </div>
-        </nav>
+      <navbar/>
       <div class="container position-relative hero">
          <div class="row d-flex align-items-center justify-content-between py-5 my-5 position-relative hero-content">
             <div class="col-12 col-sm-12 col-md-6 " style="text-align: -webkit-left;">
@@ -379,22 +344,24 @@
       </div>
   </div>
 </template>
-
 <script>
+import Navbar from '@/shared/Navbar.vue'
 export default {
+  components: {Navbar},
   data: () => ({
     name: 'HelloWorld',
     props: {
-      msg: String
+      msg: String,
+      toggled: false,
     }
   }),
-  methods: {
-    toRoute(x) {
-      this.$router.push({ name: x })
+  watch: {
+    $route: function(x) {
+      console.log(x)
+      // this.toggleLabel(window.location.pathname)
     },
-    asd() {
-      console.log(12)
-    }
+  },
+  methods: {
   }
 }
 /*var scrollableElement = document.body; //document.getElementById('scrollableElement');

@@ -31,10 +31,10 @@
           <i class="fas fa-wallet pr-2"></i>
           logout
         </button>
-        <button class="btn btn-primary m-1" @click="loadWallet">
+        <!-- <button class="btn btn-primary m-1" @click="loadWallet">
           <i class="fas fa-wallet pr-2"></i>
           check console
-        </button>
+        </button> -->
         <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
           <i class="khaki-text link fab fa-telegram-plane fa-2x"></i>
         </a>

@@ -1,41 +1,43 @@
-/*import Vue from 'vue'
+import Vue from 'vue'
+
+const initialState = () => {
+  return {
+    userAddress: '',
+    btcBalance: '',
+  }
+}
 
 const state = initialState()
 
 const mutations = {
-  SET_ADDRESS() {
-  	
+  SET_ADDRESS(state, payload) {
+  	state.userAddress = payload
+  },
+  SET_BALANCE(state, payload) {
+  	state.btcBalance = payload
+  },
+  LOGOUT(state, payload) {
+  	Object.assign(state, initialState())
   }
 }
 
 const getters = {
-  user: (state) => state.user,
+  userAddress: (state) => state.userAddress,
+  btcBalance: (state) => state.btcBalance,
 }
 
-const actions = {
+/*const actions = {
   async fetch_users({ commit }, payload) {
     const response = await asyncGetApi('getProfile')
     commit('SET_USER_UPDATE', response.data)
   },
-  async signup({ commit }, payload) {
-    const response = await asyncPostApi('register', payload)
-    commit('SET_USER', response.data)
-  },
-  async login({ commit }, payload) {
-    const response = await asyncPostApi('login', payload)
-    commit('SET_USER', response.data)
-  },
-  async logout({ commit }) {
-    commit('LOGOUT')
-  },
-}
+}*/
 
 export default {
   namespaced: true,
-  actions,
+  // actions,
   state,
   getters,
   mutations,
 }
 
-*/

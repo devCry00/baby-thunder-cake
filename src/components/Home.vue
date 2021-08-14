@@ -355,12 +355,6 @@ export default {
       toggled: false,
     }
   }),
-  watch: {
-    $route: function(x) {
-      console.log(x)
-      // this.toggleLabel(window.location.pathname)
-    },
-  },
   methods: {
   }
 }

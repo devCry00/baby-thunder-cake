@@ -1,48 +1,6 @@
 <template>
   <main id="app" class="wrapper" role="main">
-    <nav id="mainNav" class="navbar navbar-expand-lg  position-relative">
-      <a class="navbar-brand" href="#"><img width="70" class="d-block mr-3" src="@/assets/images/babythundercake.png"
-          alt="Babythundercake"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <!-- <span class="navbar-toggler-icon"></span> -->
-          <i class="fas fa-bars" style="color: #24170e;"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('home')">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('snapshots')">View snapshots</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link khaki-text link h6 mb-0 mr-4" >Dashboard</a>
-          </li>
-        </ul>
-      </div>
-      <div class="d-flex align-items-center">
-        <button class="btn btn-primary m-1" @click="login">
-          <i class="fas fa-wallet pr-2"></i>
-          <font-awesome-icon icon="wallet" class="mr-3"/>
-          {{ wallet ? shorten(wallet) : 'Connect wallet'}}
-        </button>
-        <button class="btn btn-primary m-1" @click="logout" v-if="wallet">
-          <i class="fas fa-wallet pr-2"></i>
-          logout
-        </button>
-        <!-- <button class="btn btn-primary m-1" @click="loadWallet">
-          <i class="fas fa-wallet pr-2"></i>
-          check console
-        </button> -->
-        <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
-          <i class="khaki-text link fab fa-telegram-plane fa-2x"></i>
-        </a>
-        <a class="text-secondary  m-2" target="_blank" href="https://twitter.com/Babythundercake">
-          <i class="khaki-text link fab fa-twitter fa-2x"></i>
-        </a>
-      </div>
-    </nav>
+    <navbar/>
     <div class="container dashboard-section mt-5 pt-5" style="">
       <marquee>
         <h5 class="khaki-text">- - THIS PAGE IS UNDER DEVELOPMENT - -</h5>
@@ -60,7 +18,7 @@
               <small>
                 Connected Account:
               </small>
-              <small id="selected-account"> {{ wallet ? wallet : 'Not Connected'}}</small>
+              <small id="selected-account"> {{ userAddress ? userAddress : 'Not Connected'}}</small>
             </h6>
             <br>
             <h4>
@@ -96,13 +54,11 @@
 </template>
 <script>
 import Navbar from '@/shared/Navbar.vue'
+import { mapGetters } from 'vuex'
 import Moralis from 'moralis'
   export default {
     components: {Navbar},
     data: () => ({
-      msg: "This is demo net work",
-      btcContract: '0xf1496dc3054b99bfe48b6738320d45eef8513610',
-      btcBalance: '',
       thunderCakeRewards: '',
       cakeRewards: '',
       wallet: '',
@@ -112,50 +68,14 @@ import Moralis from 'moralis'
       toRoute(x) {
         this.$router.push({ name: x })
       },
-      shorten(x) {
-        return `${x.slice(0, 9)}…`
-      },
       checkRewards() {
         // const web3 = await Moralis.Web3.enable();
         const contract = new Moralis.eth.Contract(contractAbi, contractAddress);
         console.log(contract)
       },
-      async login(){
-        var ethAddress
-        await Moralis.Web3.authenticate().then(function (user) {
-          ethAddress = user.get('ethAddress')
-        })
-        this.wallet = ethAddress
-        this.loadWallet()
-      },
-      async logout() {
-        await Moralis.User.logOut()
-        this.wallet = ''
-      },
-      /*getBalance(balances) {
-        var btcBalance = balances.filter(row => row.tokenAddress === this.btcContract)[0]
-        console.log(btcBalance)
-        return btcBalance
-      },*/
-      async loadWallet() {
-        var options = { chain: 'bsc', address: this.wallet }
-        // const balances = await Moralis.Web3.getAllERC20(options);  
-        const babyTcbalance = await Moralis.Web3.getERC20({chain: 'bsc', tokenAddress: '0xf1496dc3054b99bfe48b6738320d45eef8513610', address: this.wallet});
-        const cakeDividends = await Moralis.Web3.getERC20({chain: 'bsc', tokenAddress: '0x48305853f705b1f5989abbae78769128292ae484', address: this.wallet});
-        const thunderCakeDividends = await Moralis.Web3.getERC20({chain: 'bsc', tokenAddress: '0x7e849e0bd99be4421ecbd777ec3cea90aedd6276', address: this.wallet});
-        // console.log(balances)
-        // var babythundercake = balances.filter(row => row.tokenAddress === this.btcContract)[0]
-        this.btcBalance = babyTcbalance.balance.slice(0, -babyTcbalance.decimals)
-        const filterTC = thunderCakeDividends.balance.slice(0, -thunderCakeDividends.decimals)
-        const filterC = cakeDividends.balance.slice(0, -cakeDividends.decimals)
-
-        this.thunderCakeRewards = filterTC / this.btcBalance
-        this.cakeRewards = filterTC / this.btcBalance
-
-        console.log('btc',this.btcBalance)
-        console.log('cake',this.thunderCakeRewards)
-        console.log('tc',this.cakeRewards)
-      }
+    },
+    computed: {
+      ...mapGetters('wallet', ['userAddress', 'btcBalance']),
     },
     created() {
     },

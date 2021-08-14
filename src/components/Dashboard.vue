@@ -83,7 +83,7 @@
         </div>
       </div>
       <div>
-        <button id="check-btn" class="btn btn-lg mb-2 btn-glow btn-gradient-blue">
+        <button id="check-btn" class="btn btn-lg mb-2 btn-glow btn-gradient-blue" @click="checkRewards()">
           <h5 style="margin: 0">Check Rewards</h5>
         </button>
         <button id="claim-btn" class="btn btn-lg mb-2 btn-glow btn-gradient-blue">
@@ -105,6 +105,8 @@ import Moralis from 'moralis'
       msg: "This is demo net work",
       btcContract: '0xf1496dc3054b99bfe48b6738320d45eef8513610',
       btcBalance: '',
+      thunderCakeRewards: '',
+      cakeRewards: '',
       wallet: '',
       balances: [],
     }),
@@ -114,6 +116,11 @@ import Moralis from 'moralis'
       },
       shorten(x) {
         return `${x.slice(0, 9)}…`
+      },
+      checkRewards() {
+        // const web3 = await Moralis.Web3.enable();
+        const contract = new Moralis.eth.Contract(contractAbi, contractAddress);
+        console.log(contract)
       },
       async login(){
         var ethAddress
@@ -134,11 +141,22 @@ import Moralis from 'moralis'
       },*/
       async loadWallet() {
         var options = { chain: 'bsc', address: this.wallet }
-        const balances = await Moralis.Web3.getAllERC20(options);         
-        this.balances = balances
+        // const balances = await Moralis.Web3.getAllERC20(options);  
+        const babyTcbalance = await Moralis.Web3.getERC20({chain: 'bsc', tokenAddress: '0xf1496dc3054b99bfe48b6738320d45eef8513610', address: this.wallet});
+        const cakeDividends = await Moralis.Web3.getERC20({chain: 'bsc', tokenAddress: '0x48305853f705b1f5989abbae78769128292ae484', address: this.wallet});
+        const thunderCakeDividends = await Moralis.Web3.getERC20({chain: 'bsc', tokenAddress: '0x7e849e0bd99be4421ecbd777ec3cea90aedd6276', address: this.wallet});
+        // console.log(balances)
+        // var babythundercake = balances.filter(row => row.tokenAddress === this.btcContract)[0]
+        this.btcBalance = babyTcbalance.balance.slice(0, -babyTcbalance.decimals)
+        const filterTC = thunderCakeDividends.balance.slice(0, -thunderCakeDividends.decimals)
+        const filterC = cakeDividends.balance.slice(0, -cakeDividends.decimals)
 
-        var babythundercake = balances.filter(row => row.tokenAddress === this.btcContract)[0]
-        this.btcBalance = babythundercake.balance.slice(0, -babythundercake.decimals)
+        this.thunderCakeRewards = filterTC / this.btcBalance
+        this.cakeRewards = filterTC / this.btcBalance
+
+        console.log('btc',this.btcBalance)
+        console.log('cake',this.thunderCakeRewards)
+        console.log('tc',this.cakeRewards)
       }
     },
     created() {

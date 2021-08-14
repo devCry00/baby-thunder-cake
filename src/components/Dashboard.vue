@@ -31,7 +31,7 @@
           <i class="fas fa-wallet pr-2"></i>
           logout
         </button>
-        <button class="btn btn-primary m-1" @click="test">
+        <button class="btn btn-primary m-1" @click="loadWallet">
           <i class="fas fa-wallet pr-2"></i>
           check console
         </button>
@@ -60,21 +60,24 @@
               <small>
                 Connected Account:
               </small>
-              <small id="selected-account"> Not Connected</small>
+              <small id="selected-account"> {{ wallet ? wallet : 'Not Connected'}}</small>
             </h6>
             <br>
-
-            <h4 style="">
+            <h4>
+              $Babythundercake Balance:
+              <span id="unclaimed-rewards"> {{ btcBalance ? btcBalance : 'N/A' }} </span>
+            </h4>
+            <h4>
               Unclaimed Rewards:
-              <span id="unclaimed-rewards"> N/A </span> $BTC
+              <span id="unclaimed-rewards"> N/A </span>
             </h4>
-            <h4 style="">
+            <h4>
               <span>Claimed Rewards: </span>
-              <span id="claimed-rewards"> N/A </span> $BTC
+              <span id="claimed-rewards"> N/A </span>
             </h4>
-            <h4 style="">
+            <h4>
               <span>Total Rewards Distributed: </span>
-              <span id="total-rewards"> N/A </span> $BTC
+              <span id="total-rewards"> N/A </span>
             </h4>
         </div>
         </div>
@@ -109,20 +112,15 @@ import Moralis from 'moralis'
     },
     data: () => ({
       msg: "This is demo net work",
+      btcContract: '0xf1496dc3054b99bfe48b6738320d45eef8513610',
+      btcBalance: '',
       wallet: '',
-      moralisUser: {},
+      balances: [],
     }),
     methods:{
       toRoute(x) {
         this.$router.push({ name: x })
       },
-      /*
-      vue-metamask dialog
-
-      onComplete(data){
-          console.log('data:', data);
-          this.wallet = data.metaMaskAddress
-      },*/
       shorten(x) {
         return `${x.slice(0, 9)}…`
       },
@@ -130,26 +128,29 @@ import Moralis from 'moralis'
         var ethAddress
         await Moralis.Web3.authenticate().then(function (user) {
           ethAddress = user.get('ethAddress')
-          console.log('moralisUser', user)
         })
         this.wallet = ethAddress
+        this.loadWallet()
       },
       async logout() {
-        // not yet working
-        console.log(Moralis)
         await Moralis.User.logOut()
         this.wallet = ''
       },
-      async test() {
+      /*getBalance(balances) {
+        var btcBalance = balances.filter(row => row.tokenAddress === this.btcContract)[0]
+        console.log(btcBalance)
+        return btcBalance
+      },*/
+      async loadWallet() {
         var options = { chain: 'bsc', address: this.wallet }
-        const balances = await Moralis.Web3.getAllERC20(options); 
-        console.log('balances', balances)
+        const balances = await Moralis.Web3.getAllERC20(options);         
+        this.balances = balances
+
+        var babythundercake = balances.filter(row => row.tokenAddress === this.btcContract)[0]
+        this.btcBalance = babythundercake.balance.slice(0, -babythundercake.decimals)
       }
     },
     created() {
-
-
-      console.log('moralis',Moralis)
-    }
+    },
   }
 </script>

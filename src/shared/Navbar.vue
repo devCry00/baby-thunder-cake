@@ -33,12 +33,6 @@
           <font-awesome-icon icon="wallet" class="mr-3"/>
           {{ userAddress ? shorten(userAddress) : 'Connect wallet'}}
         </button>
-        <!-- <button class="btn btn-primary m-1" @click="logout" v-if="userAddress">
-          Disconnect
-        </button>
-        <button class="btn btn-primary m-1" @click="walletButton">
-          walletButton
-        </button> -->
         <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
 	        <font-awesome-icon :icon="['fab', 'telegram-plane']" class="fa-2x mr-2 mb-2"/>
         </a>
@@ -83,12 +77,22 @@ export default {
     },
     async walletButton() {
       if( !Moralis.User.current() ) {
-        var ethAddress
-        await Moralis.Web3.authenticate().then(function (user) {
-          ethAddress = user.get('ethAddress')
+        await Moralis.Web3.authenticate().then(user => {
+          this.SET_ADDRESS(user.get('ethAddress'))
+          this.loadWallet()
         })
-        this.SET_ADDRESS(ethAddress)
-        this.loadWallet()
+        .catch(response => {
+          if(response == 'Error: Non ethereum enabled browser') {
+            this.$dialog
+              .confirm('Metamask is required for this operation, clicking continue will redirect to the download page.')
+              .then(data => {
+                window.open('https://metamask.io/', '_blank').focus()
+              })
+              .catch(data => {
+                // on cancel
+              })
+          }
+        })
       }
       else {
         this.$dialog

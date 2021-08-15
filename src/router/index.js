@@ -8,20 +8,20 @@ import Notfound from '@/components/404.vue'
 
 Vue.use(Router)
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: [
     {
-      path: '/baby-thunder-cake/',
+      path: '/',
       name: 'home',
       component: Home
     },
     {
-      path: '/baby-thunder-cake/snapshots',
+      path: '/snapshots',
       name: 'snapshots',
       component: Snapshots
     },
     {
-      path: '/baby-thunder-cake/dashboard',
+      path: '/dashboard',
       name: 'dashboard',
       component: Dashboard
     },

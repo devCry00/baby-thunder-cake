@@ -1,7 +1,7 @@
 <template>
   <main id="app" class="wrapper ma-0" role="main">
     <navbar/>
-    <div class="container dashboard-section mt-5 pt-5" style="">
+    <div class="container dashboard-section" style="">
       <marquee>
         <h5 class="khaki-text">- - THIS PAGE IS UNDER DEVELOPMENT - -</h5>
       </marquee>
@@ -21,22 +21,25 @@
               <small id="selected-account"> {{ userAddress ? userAddress : 'Not Connected'}}</small>
             </h6>
             <br>
-            <h4>
-              $Babythundercake Balance:
-              <span id="unclaimed-rewards"> {{ btcBalance ? numberWithCommas(btcBalance) : 'N/A' }} </span>
-            </h4>
-            <h4>
-              Unclaimed Rewards:
-              <span id="unclaimed-rewards"> N/A </span>
-            </h4>
-            <h4>
-              <span>Claimed Rewards: </span>
-              <span id="claimed-rewards"> N/A </span>
-            </h4>
-            <h4>
-              <span>Total Rewards Distributed: </span>
-              <span id="total-rewards"> N/A </span>
-            </h4>
+<!-- ================================================================================================= -->
+            <div class="tokens">
+              <h4>
+                <span>$Babythundercake Balance:</span>
+                <span id="unclaimed-rewards"> {{ btcBalance ? numberWithCommas(btcBalance) : 'N/A' }} </span>
+              </h4>
+              <h4>
+                <span>Unclaimed Rewards:</span>
+                <span id="unclaimed-rewards"> N/A </span>
+              </h4>
+              <h4>
+                <span>Claimed Rewards: </span>
+                <span id="claimed-rewards"> N/A </span>
+              </h4>
+              <h4>
+                <span>Total Rewards Distributed: </span>
+                <span id="total-rewards"> N/A </span>
+              </h4>
+            </div>
         </div>
         </div>
       </div>

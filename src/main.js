@@ -24,6 +24,7 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 
 require('@/style.css')
+require('@/media.css')
 
 
 Moralis.initialize("aNasMyiEwoVKpmpk37PoegKx3OXHaj35Eelj0Anx", "", "KD7XAmprYVWPBs68Yzd5mtqYOEWRQpQemfCPpR7H");

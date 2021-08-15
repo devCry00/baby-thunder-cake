@@ -15206,6 +15206,17 @@ div#notfound-page {
   margin: 1%;
 }
 
+.dashboard-section .tokens h4 span:first-child {
+  margin-right: 10px;
+}
+
+.dashboard-section .tokens h4 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
 .custom-gradient-bg {
   width: -webkit-fill-available;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -15253,7 +15264,8 @@ div#notfound-page {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
+  padding: 0 10px;
 }
 
 #roadmap ul h6 {
@@ -15285,3 +15297,7 @@ div#notfound-page {
   background-color: green;
 }
 /* -- dialog-plugin-css -- */
+
+div.hero {
+  margin-top: 7rem;
+}

@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/baby-thunder-cake/'
+  // publicPath: '/newbabythundercake/'
 }

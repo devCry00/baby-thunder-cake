@@ -21,7 +21,10 @@
             <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('home')">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('snapshots')">View snapshots</a>
+            <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('snapshots')">Snapshots</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('comic')">Comics</a>
           </li>
           <li class="nav-item">
             <a class="nav-link khaki-text link h6 mb-0 mr-4" @click="toRoute('dashboard')">Dashboard</a>
@@ -57,7 +60,7 @@ export default {
     },
   },*/
   methods: {
-  	...mapMutations('wallet', ['SET_ADDRESS', 'SET_BALANCE', 'LOGOUT']),
+  	...mapMutations('wallet', ['SET_ADDRESS', 'SET_BALANCE', 'LOGOUT', 'SET_REWARDS']),
     toRoute(x) {
       this.$router.push({ name: x })
     },
@@ -129,9 +132,15 @@ export default {
       this.thunderCakeRewards = filterTC / this.btcBalance
       this.cakeRewards = filterTC / this.btcBalance
 
-      console.log('btc',this.btcBalance)
+      this.SET_REWARDS({
+        unclaimed: {
+          thundercake: this.thunderCakeRewards,
+          cake: this.cakeRewards,
+        }
+      })
+      /*console.log('btc',this.btcBalance)
       console.log('cake',this.thunderCakeRewards)
-      console.log('tc',this.cakeRewards)
+      console.log('tc',this.cakeRewards)*/
     },
     handleScroll (event) {
       const element = document.getElementById("mainNav");

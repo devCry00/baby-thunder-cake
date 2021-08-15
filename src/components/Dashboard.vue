@@ -28,17 +28,39 @@
                 <span id="unclaimed-rewards"> {{ btcBalance ? numberWithCommas(btcBalance) : 'N/A' }} </span>
               </h4>
               <h4>
-                <span>Unclaimed Rewards:</span>
-                <span id="unclaimed-rewards"> N/A </span>
-              </h4>
-              <h4>
-                <span>Claimed Rewards: </span>
-                <span id="claimed-rewards"> N/A </span>
-              </h4>
-              <h4>
                 <span>Total Rewards Distributed: </span>
                 <span id="total-rewards"> N/A </span>
               </h4>
+              <div class="inset">
+                <h4>
+                  <span>$Thundercake Rewards:</span>
+                </h4>
+                <div class="row">
+                  <div class="col-md-6">
+                    <small>unclaimed:</small>
+                    <h6 id="unclaimed-rewards"> {{ rewards.unclaimed ? rewards.unclaimed.thundercake : 'N/A' }} </h6>
+                  </div>
+                  <div class="col-md-6">
+                    <small>claimed:</small>
+                    <h6 id="claimed-rewards"> N/A </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="inset">
+                <h4>
+                  <span>$Cake Rewards: </span>
+                </h4>
+                <div class="row">
+                  <div class="col-md-6">
+                    <small>unclaimed:</small>
+                    <h6 id="unclaimed-rewards"> {{ rewards.unclaimed ? rewards.unclaimed.cake : 'N/A' }} </h6>
+                  </div>
+                  <div class="col-md-6">
+                    <small>claimed:</small>
+                    <h6 id="claimed-rewards"> N/A </h6>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
         </div>
@@ -81,7 +103,7 @@ import Moralis from 'moralis'
       }
     },
     computed: {
-      ...mapGetters('wallet', ['userAddress', 'btcBalance']),
+      ...mapGetters('wallet', ['userAddress', 'btcBalance', 'rewards']),
     },
     created() {
     },

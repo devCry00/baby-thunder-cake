@@ -19,3 +19,19 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width:  600px) {
+  #notfound-page h1 {
+    font-size: 3rem;
+  }
+
+  #notfound-page h5 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width:  768px) {
+  #comic-page h2 {
+    font-size: 1rem;
+  }
+}

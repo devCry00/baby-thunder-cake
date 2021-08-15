@@ -15181,7 +15181,7 @@ div#notfound-page, div#comic-page {
 
 .dashboard-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   align-content: center;

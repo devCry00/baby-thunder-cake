@@ -8,6 +8,10 @@
   div.hero {
     margin-top: 10rem;
   }
+
+  div.dashboard-section {
+    margin-top: 5rem;
+  }
 }
 
 @media (max-width: 500px) {

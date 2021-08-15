@@ -44,7 +44,7 @@
         </button>
         <button class="btn btn-primary m-1" @click="logout" v-if="userAddress">
           <i class="fas fa-wallet pr-2"></i>
-          logout
+          Disconnect
         </button>
         <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
 	        <font-awesome-icon :icon="['fab', 'telegram-plane']" class="fa-2x mr-2 mb-2"/>
@@ -89,12 +89,14 @@ export default {
       this.toggled = !this.toggled
     },
     async login(){
-      var ethAddress
-      await Moralis.Web3.authenticate().then(function (user) {
-        ethAddress = user.get('ethAddress')
-      })
-      this.SET_ADDRESS(ethAddress)
-      this.loadWallet()
+      if( !Moralis.User.current() ) {
+        var ethAddress
+        await Moralis.Web3.authenticate().then(function (user) {
+          ethAddress = user.get('ethAddress')
+        })
+        this.SET_ADDRESS(ethAddress)
+        this.loadWallet()
+      }
       console.log(Moralis.User.current())
     },
     async logout() {
@@ -128,7 +130,7 @@ export default {
     }
   },
   computed: {
-  	...mapGetters('wallet', ['userAddress']),
+  	...mapGetters('wallet', ['userAddress', 'btcBalance']),
   }
 }
 </script>

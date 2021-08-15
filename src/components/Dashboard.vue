@@ -23,7 +23,7 @@
             <br>
             <h4>
               $Babythundercake Balance:
-              <span id="unclaimed-rewards"> {{ btcBalance ? btcBalance : 'N/A' }} </span>
+              <span id="unclaimed-rewards"> {{ btcBalance ? numberWithCommas(btcBalance) : 'N/A' }} </span>
             </h4>
             <h4>
               Unclaimed Rewards:
@@ -73,6 +73,9 @@ import Moralis from 'moralis'
         const contract = new Moralis.eth.Contract(contractAbi, contractAddress);
         console.log(contract)
       },
+      numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
     },
     computed: {
       ...mapGetters('wallet', ['userAddress', 'btcBalance']),

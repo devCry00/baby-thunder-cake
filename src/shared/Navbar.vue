@@ -3,15 +3,7 @@
     <a class="navbar-brand" href="#">
     	<img width="70" class="d-block mr-3" src="@/assets/images/babythundercake.png" alt="Babythundercake">
     </a>
-    <button
-    	class="navbar-toggler"
-    	type="button"
-    	data-toggle="collapse"
-    	data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation"
-      @click="toggleNav()"
-     >
+    <button class="navbar-toggler" @click="toggleNav()">
       <font-awesome-icon icon="bars" class="mr-3" style="color: #24170e;"/>
     </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,12 +30,10 @@
      </div>
      <div class="d-flex align-items-center">
 	     	<button class="btn btn-primary m-1" @click="login">
-          <i class="fas fa-wallet pr-2"></i>
           <font-awesome-icon icon="wallet" class="mr-3"/>
           {{ userAddress ? shorten(userAddress) : 'Connect wallet'}}
         </button>
         <button class="btn btn-primary m-1" @click="logout" v-if="userAddress">
-          <i class="fas fa-wallet pr-2"></i>
           Disconnect
         </button>
         <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
@@ -97,12 +87,10 @@ export default {
         this.SET_ADDRESS(ethAddress)
         this.loadWallet()
       }
-      console.log(Moralis.User.current())
     },
-    async logout() {
-      await Moralis.User.logOut()
+    logout() {
+      Moralis.User.logOut()
       this.LOGOUT()
-      console.log(Moralis.User.current())
     },
     /*getBalance(balances) {
       var btcBalance = balances.filter(row => row.tokenAddress === this.btcContract)[0]
@@ -131,6 +119,10 @@ export default {
   },
   computed: {
   	...mapGetters('wallet', ['userAddress', 'btcBalance']),
-  }
+  },
+  created() {
+    Moralis.User.current() && this.SET_ADDRESS( Moralis.User.current().attributes.accounts[0] ) // checks if there is logged user
+    this.loadWallet()
+  },
 }
 </script>

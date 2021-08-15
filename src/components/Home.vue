@@ -1,5 +1,5 @@
 <template>
-      <div class="content" style="overflow-x: hidden;" @scroll="asd()">
+   <div class="content" style="overflow-x: hidden;" @scroll="asd()">
       <navbar/>
       <div class="container position-relative hero">
          <div class="row d-flex align-items-center justify-content-between py-5 my-5 position-relative hero-content">

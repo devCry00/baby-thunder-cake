@@ -4,27 +4,32 @@ import Router from 'vue-router'
 import Home from '@/components/Home.vue'
 import Snapshots from '@/components/Snapshots.vue'
 import Dashboard from '@/components/Dashboard.vue'
+import Notfound from '@/components/404.vue'
 
 Vue.use(Router)
 const router = new Router({
-	mode: 'history',
-	routes: [
-		{
-			path: '/baby-thunder-cake/',
-			name: 'home',
-			component: Home
-		},
-		{
-			path: '/baby-thunder-cake/snapshots',
-			name: 'snapshots',
-			component: Snapshots
-		},
-		{
-			path: '/baby-thunder-cake/dashboard',
-			name: 'dashboard',
-			component: Dashboard
-		}
-	]
+  mode: 'history',
+  routes: [
+    {
+      path: '/baby-thunder-cake/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/baby-thunder-cake/snapshots',
+      name: 'snapshots',
+      component: Snapshots
+    },
+    {
+      path: '/baby-thunder-cake/dashboard',
+      name: 'dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/*',
+      component: Notfound
+    },
+  ]
 })
 
 

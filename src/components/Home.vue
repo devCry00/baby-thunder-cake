@@ -358,27 +358,6 @@ export default {
   methods: {
   }
 }
-/*var scrollableElement = document.body; //document.getElementById('scrollableElement');
-var element = document.getElementById("mainNav");
-
-scrollableElement.addEventListener('wheel', checkScrollDirection);
-
-function checkScrollDirection(event) {
- if (checkScrollDirectionIsUp(event)) {
-   element.classList.add("nav-up");
-   element.classList.remove("nav-down");
- } else {
-   element.classList.add("nav-down");
-   element.classList.remove("nav-up");
- }
-}
-
-function checkScrollDirectionIsUp(event) {
- if (event.wheelDelta) {
-   return event.wheelDelta > 0;
- }
- return event.deltaY < 0;
-}*/
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

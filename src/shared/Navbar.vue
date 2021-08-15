@@ -29,13 +29,16 @@
         </ul>
      </div>
      <div class="d-flex align-items-center">
-	     	<button class="btn btn-primary m-1" @click="login">
+	     	<button class="btn btn-primary m-1" @click="walletButton">
           <font-awesome-icon icon="wallet" class="mr-3"/>
           {{ userAddress ? shorten(userAddress) : 'Connect wallet'}}
         </button>
-        <button class="btn btn-primary m-1" @click="logout" v-if="userAddress">
+        <!-- <button class="btn btn-primary m-1" @click="logout" v-if="userAddress">
           Disconnect
         </button>
+        <button class="btn btn-primary m-1" @click="walletButton">
+          walletButton
+        </button> -->
         <a class="text-secondary m-2 mr-3 t" target="_blank" href="https://t.me/BabyThunderCake">
 	        <font-awesome-icon :icon="['fab', 'telegram-plane']" class="fa-2x mr-2 mb-2"/>
         </a>
@@ -78,7 +81,7 @@ export default {
       }
       this.toggled = !this.toggled
     },
-    async login(){
+    async walletButton() {
       if( !Moralis.User.current() ) {
         var ethAddress
         await Moralis.Web3.authenticate().then(function (user) {
@@ -86,6 +89,16 @@ export default {
         })
         this.SET_ADDRESS(ethAddress)
         this.loadWallet()
+      }
+      else {
+        this.$dialog
+          .confirm('Disconnect wallet?')
+          .then(data => {
+            this.logout()
+          })
+          .catch(data => {
+            // on cancel
+          })
       }
     },
     logout() {
@@ -115,14 +128,37 @@ export default {
       console.log('btc',this.btcBalance)
       console.log('cake',this.thunderCakeRewards)
       console.log('tc',this.cakeRewards)
+    },
+    handleScroll (event) {
+      const element = document.getElementById("mainNav");
+      var scrollingUp
+
+      if (event.wheelDelta) {
+        scrollingUp = event.wheelDelta > 0
+      }
+      scrollingUp = event.deltaY < 0
+
+      if (scrollingUp) {
+         element.classList.add("nav-up");
+         element.classList.remove("nav-down");
+       } else {
+         element.classList.add("nav-down");
+         element.classList.remove("nav-up");
+       }
     }
   },
   computed: {
   	...mapGetters('wallet', ['userAddress', 'btcBalance']),
   },
   created() {
-    Moralis.User.current() && this.SET_ADDRESS( Moralis.User.current().attributes.accounts[0] ) // checks if there is logged user
-    this.loadWallet()
+    window.addEventListener('wheel', this.handleScroll)
+    if(Moralis.User.current()){
+      this.SET_ADDRESS( Moralis.User.current().attributes.accounts[0] ) // checks if there is logged user
+      this.loadWallet()
+    }
+  },
+  destroyed () {
+    window.removeEventListener('wheel', this.handleScroll);
   },
 }
 </script>

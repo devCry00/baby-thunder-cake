@@ -1,5 +1,5 @@
 <template>
-  <main id="app" class="wrapper" role="main">
+  <main id="app" class="wrapper ma-0" role="main">
     <navbar/>
     <div class="container dashboard-section mt-5 pt-5" style="">
       <marquee>
@@ -14,7 +14,7 @@
               </small>
               <small id="network-name"> Not Connected</small>
             </h6>
-            <h6 style="text-align: initial !important;">
+            <h6 style="text-align: initial; overflow: hidden; text-overflow: ellipsis;">
               <small>
                 Connected Account:
               </small>

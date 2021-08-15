@@ -1,4 +1,4 @@
-/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
  * 2. Correct the line height in all browsers.
@@ -15042,7 +15042,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  background: #e2bebeb0;
+  background: #e2bebe;
   z-index: 999;
 }
 
@@ -15157,8 +15157,9 @@ a {
   height: 30rem;
 }
 
-html#dashboard, html#dashboard body, html#dashboard body main, html#dashboard body main, html#dashboard body main > div {
-  /*border:  solid red;*/
+html, html body, html body div#app, html body main, html body main, html body main > div {
+  /*margin: 0;*/
+  /*padding: 0;*/
   height: -webkit-fill-available;
 }
 
@@ -15242,4 +15243,28 @@ html#dashboard, html#dashboard body, html#dashboard body main, html#dashboard bo
   text-align: -webkit-left;
 }
 
-/*# sourceMappingURL=../../../scss */
+/* -- dialog-plugin-css -- */
+  
+.dg-content {
+  font-family: "Fredoka One";
+  font-size: unset;
+}
+
+.dg-btn--ok {
+  color: white;
+  background: #d08750 -webkit-gradient(linear, left top, left bottom, from(#d08750), to(#815C3C)) repeat-x;
+  border-color: #815C3C;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 15%), 0 1px 1px rgb(0 0 0 / 8%);
+}
+
+.dg-btn--cancel {
+  color: white;
+  background: #d08750 -webkit-gradient(linear, left top, left bottom, from(#d08750), to(#815C3C)) repeat-x;
+  border-color: #815C3C;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 15%), 0 1px 1px rgb(0 0 0 / 8%);
+}
+ 
+.dg-btn-loader .dg-circle {
+  background-color: green;
+}
+/* -- dialog-plugin-css -- */
